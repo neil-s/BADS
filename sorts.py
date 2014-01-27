@@ -5,11 +5,11 @@ def bubblesort(xs):
     while swapped:
         swapped = False
         # Do a single pass of the list
-        for i in range(len(xs)-1):
-            if xs[i] > xs[i+1]:
+        for i in range(len(xs) - 1):
+            if xs[i] > xs[i + 1]:
                 #Swap xs[i] and xs[i+1]
-                temp = xs[i+1]
-                xs[i+1] = xs[i]
+                temp = xs[i + 1]
+                xs[i + 1] = xs[i]
                 xs[i] = temp
 
                 swapped = True
@@ -19,7 +19,7 @@ def mergesort(xs):
     if(len(xs) < 2):
         return xs
     
-    middleindex = int(len(xs)/2)
+    middleindex = int(len(xs) / 2)
     firsthalf = xs[0:middleindex]
     secondhalf = xs[middleindex:len(xs)]
     return merge(mergesort(firsthalf),mergesort(secondhalf))
@@ -41,7 +41,7 @@ def quicksort(xs):
     if (len(xs) < 2):
         return xs
 
-    pivotindex = int(len(xs)/2)
+    pivotindex = int(len(xs) / 2)
     pivot = xs.pop(pivotindex)
     lowers = []
     uppers = []
