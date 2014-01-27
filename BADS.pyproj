@@ -22,7 +22,6 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="BADS.py" />
     <Compile Include="sorts.py" />
     <Compile Include="testsorts.py" />
   </ItemGroup>
