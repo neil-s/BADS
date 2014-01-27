@@ -40,6 +40,12 @@ class Test_bubblesort(unittest.TestCase):
         sorted = [-4, -1, 0, 2, 3]
         self.assertEqual(sorted, self.sortfunction(unsorted))
 
+    @unittest.skip("Test for stable sorting not designed yet")
+    def test_stable(self):
+        unsorted = {1: 'Neil', 3: 'Tom', 2: 'Will', 1: 'LastNeil'}
+        sorted = {1: 'Neil', 1: 'LastNeil', 2: 'Will', 3: 'Tom'}
+        self.assertEqual(sorted, self.sortfunction(unsorted))
+
 class Test_mergesort(unittest.TestCase):
     def setUp(self):
         self.sortfunction = sorts.mergesort
@@ -79,6 +85,14 @@ class Test_mergesort(unittest.TestCase):
         sorted = [-4, -1, 0, 2, 3]
         self.assertEqual(sorted, self.sortfunction(unsorted))
 
+    @unittest.skip("Test for stable sorting not designed yet")
+    def test_stable(self):
+        unsorted = {1: 'Neil', 3: 'Tom', 2: 'Will', 1: 'LastNeil'}
+        sorted = {1: 'Neil', 1: 'LastNeil', 2: 'Will', 3: 'Tom'}
+        self.assertEqual(sorted, self.sortfunction(unsorted))
+
+
+
 class Test_merge(unittest.TestCase):
     def test_mergeempties(self):
         first = []
@@ -109,6 +123,93 @@ class Test_merge(unittest.TestCase):
         second = [2,5]
         merged = [1,2,3,4,5,6]
         self.assertEqual(merged, sorts.merge(first,second))
+
+class Test_quicksort(unittest.TestCase):
+    def setUp(self):
+        self.sortfunction = sorts.quicksort
+
+    def test_empty(self):
+        unsorted = []
+        sorted = []
+        self.assertEqual(sorted, self.sortfunction(unsorted))
+
+    def test_size_of_output(self):
+        unsorted = [3,1,2,4,5]
+        self.assertEqual(5, len(self.sortfunction(unsorted)))
+
+    def test_simple(self):
+        unsorted = [3,2,4,5,1]
+        sorted = [1,2,3,4,5]
+        self.assertEqual(sorted, self.sortfunction(unsorted))
+
+    def test_sorted(self):
+        unsorted = [1,2,3,4,5]
+        sorted = [1,2,3,4,5]
+        self.assertEqual(sorted, self.sortfunction(unsorted))
+        
+    def test_reversed(self):
+        unsorted = [5,4,3,2,1]
+        sorted = [1,2,3,4,5]
+        self.assertEqual(sorted, self.sortfunction(unsorted))
+
+    def test_duplicates(self):
+        unsorted = [3,2,1,2,4]
+        sorted = [1,2,2,3,4]
+        self.assertEqual(sorted, self.sortfunction(unsorted))
+
+    def test_letters(self):
+        unsorted = ['c','b','d','e','a']
+        sorted = ['a','b','c','d','e']
+        self.assertEqual(sorted, self.sortfunction(unsorted))
+
+    def test_negatives(self):
+        unsorted = [3, -1, 0, -4, 2]
+        sorted = [-4, -1, 0, 2, 3]
+        self.assertEqual(sorted, self.sortfunction(unsorted))
+
+class Test_quicksortrandom(unittest.TestCase):
+    def setUp(self):
+        self.sortfunction = sorts.quicksortrandom
+
+    def test_empty(self):
+        unsorted = []
+        sorted = []
+        self.assertEqual(sorted, self.sortfunction(unsorted))
+
+    def test_size_of_output(self):
+        unsorted = [3,1,2,4,5]
+        self.assertEqual(5, len(self.sortfunction(unsorted)))
+
+    def test_simple(self):
+        unsorted = [3,2,4,5,1]
+        sorted = [1,2,3,4,5]
+        self.assertEqual(sorted, self.sortfunction(unsorted))
+
+    def test_sorted(self):
+        unsorted = [1,2,3,4,5]
+        sorted = [1,2,3,4,5]
+        self.assertEqual(sorted, self.sortfunction(unsorted))
+        
+    def test_reversed(self):
+        unsorted = [5,4,3,2,1]
+        sorted = [1,2,3,4,5]
+        self.assertEqual(sorted, self.sortfunction(unsorted))
+
+    def test_duplicates(self):
+        unsorted = [3,2,1,2,4]
+        sorted = [1,2,2,3,4]
+        self.assertEqual(sorted, self.sortfunction(unsorted))
+
+    def test_letters(self):
+        unsorted = ['c','b','d','e','a']
+        sorted = ['a','b','c','d','e']
+        self.assertEqual(sorted, self.sortfunction(unsorted))
+
+    def test_negatives(self):
+        unsorted = [3, -1, 0, -4, 2]
+        sorted = [-4, -1, 0, 2, 3]
+        self.assertEqual(sorted, self.sortfunction(unsorted))
+
 
 
 if __name__ == '__main__':
